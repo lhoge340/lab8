@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Lab 8
@@ -121,6 +124,11 @@ public class BoardGame {
 	public String[] moveTwoPlayers(String[] playerNames, Location[] newLocations)
 	{
 		//TODO: Finish method
+		GamePiece player1 = playerPieces.get(playerNames[0]);
+		GamePiece player2 = playerPieces.get(playerNames[1]);
+		
+		String newPlayer1 = GamePiece.getPlayerWithGamePiece(GamePiece.movesFirst(player1, player2));
+		
 	}
 	
 	/**
@@ -144,29 +152,106 @@ public class BoardGame {
 	 */
 	public ArrayList<String> getPlayersAtLocation(Location loc)
 	{
-		
+		ArrayList<String> playersAtLocation = new ArrayList<String>();
+
+		Set set = playerLocations.entrySet();
+        Iterator iterator = set.iterator();
+        while (iterator.hasNext()) 
+        {
+            String item = (String) iterator.next();
+            if (getPlayersLocation(item) == loc)
+            {
+            	playersAtLocation.add(item);
+            }
+        }
+        
+        return playersAtLocation;
 	}
 	
+	/**
+	 * Given a location, find the game pieces associated with all the players at that location.
+	 * 
+	 * @param loc The location at which we want to find game pieces.
+	 * 
+	 * @return The game pieces for which an associated player is at the given location.
+	 */
 	public ArrayList<GamePiece> getGamePiecesAtLocation(Location loc)
 	{
-		//TODO: Finish method
+		ArrayList<GamePiece> piecesAtLocation = new ArrayList<GamePiece>();
+
+		Set set = playerLocations.entrySet();
+        Iterator iterator = set.iterator();
+        while (iterator.hasNext()) 
+        {
+            String item = (String) iterator.next();
+            if (getPlayersLocation(item) == loc)
+            {
+            	GamePiece temp = getPlayerGamePiece(item);
+            	piecesAtLocation.add(temp);
+            }
+        }
+        
+        return piecesAtLocation;
 	}
 	
+	/**
+	 * Gets all players recorded in the game.
+	 * 
+	 * @return The list of players in the board game.
+	 */
 	public Set<String> getPlayers()
 	{
-		//TODO: Finish method
+		Set<String> players = null;
+		
+		Set set = playerLocations.entrySet();
+        Iterator iterator = set.iterator();
+        while (iterator.hasNext()) 
+        {
+            String item = (String) iterator.next();
+            
+            players.add(item);
+            
+        }
+        
+        return players;
 	}
 	
+	/**
+	 * Gets all locations that the players are at (not all possible locations). Be careful 
+	 * that you don't confuse this with getPlayersLocation!
+	 * 
+	 * @return The set of locations (i.e. no duplicate elements) at which at least one 
+	 * player is present. Hint: look at the javadocs for the HashSet.
+	 */
 	public Set<Location> getPlayerLocations()
 	{
-		//TODO: Finish method
+		Set<String> locations = null;
+		
+		Set set = playerLocations.entrySet();
+        Iterator iterator = set.iterator();
+        while (iterator.hasNext()) 
+        {
+            String item = (String) iterator.next();
+            
+            
+            
+            players.add(item);
+            
+        }
+            }
+        }
 	}
 	
+	/**
+	 * Gets all game pieces associated with the players (not all possible game pieces).
+	 * 
+	 * @return The set of game pieces (i.e. no duplicate elements) that have been associated 
+	 * with a player. Hint: look at the javadocs for the HashSet.
+	 */
 	public Set<GamePiece> getPlayerPieces()
 	{
 		//TODO: Finish method
 	}
-	
 	
 
 }
