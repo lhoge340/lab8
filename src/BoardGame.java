@@ -1,7 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -123,11 +123,28 @@ public class BoardGame {
 	 */
 	public String[] moveTwoPlayers(String[] playerNames, Location[] newLocations)
 	{
-		//TODO: Finish method
+		
 		GamePiece player1 = playerPieces.get(playerNames[0]);
 		GamePiece player2 = playerPieces.get(playerNames[1]);
 		
-		String newPlayer1 = GamePiece.getPlayerWithGamePiece(GamePiece.movesFirst(player1, player2));
+		Location location1 = newLocations[0];
+		Location location2 = newLocations[1];
+		
+		GamePiece movedFirst = GamePiece.movesFirst(player1, player2);
+		
+		if (movedFirst == player2)
+		{
+			playerNames[0] = player2.toString();
+			playerNames[1] = player1.toString();
+			
+			newLocations[0] = location2;
+			newLocations[1] = location1;
+		}
+		
+		movePlayer(playerNames[0], newLocations[0]);
+		movePlayer(playerNames[1], newLocations[1]);
+		
+		return playerNames;
 		
 	}
 	
@@ -225,21 +242,19 @@ public class BoardGame {
 	 */
 	public Set<Location> getPlayerLocations()
 	{
-		Set<String> locations = null;
 		
-		Set set = playerLocations.entrySet();
-        Iterator iterator = set.iterator();
-        while (iterator.hasNext()) 
+		Set<Location> occupiedLocations = new HashSet<Location>();
+		
+        for (Location loc : Location.values())
         {
-            String item = (String) iterator.next();
-            
-            
-            
-            players.add(item);
-            
+        	if (playerLocations.containsValue(loc))
+        	{
+        		occupiedLocations.add(loc);
+        	}
+        		
         }
-            }
-        }
+        
+        return occupiedLocations;
 	}
 	
 	/**
@@ -250,7 +265,19 @@ public class BoardGame {
 	 */
 	public Set<GamePiece> getPlayerPieces()
 	{
-		//TODO: Finish method
+		
+		Set<GamePiece> usedGamePieces = new HashSet<GamePiece>();
+		
+        for (GamePiece piece : GamePiece.values())
+        {
+        	if (usedGamePieces.contains(piece))
+        	{
+        		usedGamePieces.add(piece);
+        	}
+        		
+        }
+        
+        return usedGamePieces;
 	}
 	
 
