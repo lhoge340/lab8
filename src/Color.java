@@ -4,12 +4,10 @@
  * Enum to represent a color (with rgb values).
  *
  * @author Lynden
- * @version 2019-03-26
+ * @version 2019-03-28
  */
 public enum Color
-	{
-	
-	
+	{ 
 	/**
 	 * RED 	The color red. Has rgb values: 255, 0, 0.
 	 * GREEN The color green. Has rgb values: 0, 255, 0.
@@ -18,7 +16,6 @@ public enum Color
 	 * CYAN The color cyan. Has rgb values: 0 255, 255.
 	 * MAGENTA The color magenta. Has rgb values: 255, 0, 255.
 	 */
-	
 	RED(255, 0, 0), GREEN(0, 255, 0), BLUE(0, 0, 255), YELLOW(255, 255, 0), 
 		CYAN(0, 255, 255), MAGENTA(255, 0, 255);
 		

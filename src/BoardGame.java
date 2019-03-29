@@ -22,7 +22,15 @@ import java.util.Set;
  */
 public class BoardGame {
 	
+	/**
+	 * Each player is associated with a unique game piece (i.e. no two players can have the same game piece).
+	 */
 	protected LinkedHashMap<String, GamePiece >playerPieces;
+	
+	/**
+	 * Each player places their game piece at a location on the board, as defined by the Location enum. 
+	 * Multiple players
+	 */
 	protected LinkedHashMap<String, Location> playerLocations;
 	
 	public BoardGame()
@@ -239,7 +247,7 @@ public class BoardGame {
 	 * that you don't confuse this with getPlayersLocation!
 	 * 
 	 * @return The set of locations (i.e. no duplicate elements) at which at least one 
-	 * player is present. Hint: look at the javadocs for the HashSet.
+	 * player is present. 
 	 */
 	public Set<Location> getPlayerLocations()
 	{
@@ -262,7 +270,7 @@ public class BoardGame {
 	 * Gets all game pieces associated with the players (not all possible game pieces).
 	 * 
 	 * @return The set of game pieces (i.e. no duplicate elements) that have been associated 
-	 * with a player. Hint: look at the javadocs for the HashSet.
+	 * with a player. 
 	 */
 	public Set<GamePiece> getPlayerPieces()
 	{

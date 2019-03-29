@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -47,7 +46,7 @@ public class BoardGameTest {
 		Assert.assertEquals("getPlayerGamePiece incorrect", GamePiece.BLUE_BOOT, 
 				monopoly.getPlayerGamePiece("Natalia"));
 	}
-	
+	 
 	/**
 	 * Test for getPlayerWithGamePiece
 	 */

@@ -5,7 +5,7 @@ import org.junit.Test;
  * Lab 8
  *
  * Test class for Color enumeration.
- *
+ * 
  * @author Lynden
  * @version 2019-03-28
  */

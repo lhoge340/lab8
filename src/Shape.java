@@ -3,8 +3,8 @@
  * 
  * Enum to represent the shape of a game piece.
  *
- * @author Lynden
- * @version 2019-03-26
+ * @author Lynden 
+ * @version 2019-03-28
  */
 public enum Shape {
 	

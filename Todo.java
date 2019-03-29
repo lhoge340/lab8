@@ -1,6 +1,6 @@
 public class Todo {/*
 Lab Section_________: 11
-Last Modified_______: 2019-03-26
+Last Modified_______: 2019-03-28
 OU ID_______________: 113442594
 OU EMAIL____________: lynden.hoge@ou.edu
 
@@ -14,9 +14,6 @@ Tasks:
 7. Write driver
 8. Write tests and test each class
 
-Write driver to play the boardgame
-Document everything
-Update version dates on everything
 Create documentation
 Test on webcat
 Fix webcat mistakes
