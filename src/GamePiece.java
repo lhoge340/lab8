@@ -14,7 +14,8 @@ public enum GamePiece
 	
 	private GamePiece(GamePieceAppearance appearance, int priority)
 	{
-		
+		this.appearance = appearance;
+		this.priority = priority;
 	}
 	
 	public Color getColor()

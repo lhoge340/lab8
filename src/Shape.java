@@ -17,7 +17,7 @@ public enum Shape {
 	 */
 	public String toString()
 	{
-		return this.toString();
+		return this.name().toLowerCase();
 	}
 
 }

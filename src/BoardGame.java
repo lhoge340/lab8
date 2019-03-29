@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map.Entry;
 import java.util.Set;
 
 /**
@@ -16,7 +17,7 @@ import java.util.Set;
  * the game pieces associated to the two players.
  * 
  * @author Lyndee
- * @version 2019-03-26
+ * @version 2019-03-28
  *
  */
 public class BoardGame {
@@ -88,8 +89,17 @@ public class BoardGame {
 	 * Else, return null.
 	 */
 	public String getPlayerWithGamePiece(GamePiece gamePiece)
-	{
-		return playerPieces.get(gamePiece).toString();
+	{	
+		for (Entry<String, GamePiece> entry : playerPieces.entrySet()) 
+		{
+			String item = entry.getKey();
+			if (getPlayerGamePiece(item) == gamePiece)
+			{
+				return item;
+			}
+		}
+		
+		return null;
 	}
 	
 	/**
@@ -123,7 +133,6 @@ public class BoardGame {
 	 */
 	public String[] moveTwoPlayers(String[] playerNames, Location[] newLocations)
 	{
-		
 		GamePiece player1 = playerPieces.get(playerNames[0]);
 		GamePiece player2 = playerPieces.get(playerNames[1]);
 		
@@ -132,10 +141,11 @@ public class BoardGame {
 		
 		GamePiece movedFirst = GamePiece.movesFirst(player1, player2);
 		
-		if (movedFirst == player2)
+		if (movedFirst.equals(player2))
 		{
-			playerNames[0] = player2.toString();
-			playerNames[1] = player1.toString();
+			
+			playerNames[0] = getPlayerWithGamePiece(player2);
+			playerNames[1] = getPlayerWithGamePiece(player1);
 			
 			newLocations[0] = location2;
 			newLocations[1] = location1;
@@ -170,19 +180,17 @@ public class BoardGame {
 	public ArrayList<String> getPlayersAtLocation(Location loc)
 	{
 		ArrayList<String> playersAtLocation = new ArrayList<String>();
-
-		Set set = playerLocations.entrySet();
-        Iterator iterator = set.iterator();
-        while (iterator.hasNext()) 
-        {
-            String item = (String) iterator.next();
-            if (getPlayersLocation(item) == loc)
-            {
-            	playersAtLocation.add(item);
-            }
-        }
         
-        return playersAtLocation;
+        for (Entry<String, Location> entry : playerLocations.entrySet()) 
+		{
+			String item = entry.getKey();
+			if (getPlayersLocation(item) == loc)
+			{
+				playersAtLocation.add(item);
+			}
+		}
+		
+		return playersAtLocation;
 	}
 	
 	/**
@@ -195,20 +203,17 @@ public class BoardGame {
 	public ArrayList<GamePiece> getGamePiecesAtLocation(Location loc)
 	{
 		ArrayList<GamePiece> piecesAtLocation = new ArrayList<GamePiece>();
-
-		Set set = playerLocations.entrySet();
-        Iterator iterator = set.iterator();
-        while (iterator.hasNext()) 
-        {
-            String item = (String) iterator.next();
-            if (getPlayersLocation(item) == loc)
-            {
-            	GamePiece temp = getPlayerGamePiece(item);
-            	piecesAtLocation.add(temp);
-            }
-        }
         
-        return piecesAtLocation;
+        for (Entry<String, Location> entry : playerLocations.entrySet()) 
+		{
+			String item = entry.getKey();
+			if (getPlayersLocation(item) == loc)
+			{
+				piecesAtLocation.add(playerPieces.get(item));
+			}
+		}
+		
+		return piecesAtLocation;
 	}
 	
 	/**
@@ -218,16 +223,12 @@ public class BoardGame {
 	 */
 	public Set<String> getPlayers()
 	{
-		Set<String> players = null;
+		Set<String> players = new LinkedHashSet<String>();
 		
-		Set set = playerLocations.entrySet();
-        Iterator iterator = set.iterator();
-        while (iterator.hasNext()) 
-        {
-            String item = (String) iterator.next();
-            
+		for (Entry<String, Location> entry : playerLocations.entrySet()) 
+		{
+			String item = entry.getKey();
             players.add(item);
-            
         }
         
         return players;
@@ -270,7 +271,7 @@ public class BoardGame {
 		
         for (GamePiece piece : GamePiece.values())
         {
-        	if (usedGamePieces.contains(piece))
+        	if (playerPieces.containsValue(piece))
         	{
         		usedGamePieces.add(piece);
         	}

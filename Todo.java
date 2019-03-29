@@ -14,6 +14,16 @@ Tasks:
 7. Write driver
 8. Write tests and test each class
 
+Write driver to play the boardgame
+Document everything
+Update version dates on everything
+Create documentation
+Test on webcat
+Fix webcat mistakes
+Make sure github repo is working and everything has been committed
+Do the GCP part of the lab
+Submit github and gcp links on canvas
+
 Estimated Time (minutes):
 1. 10
 2. 10
@@ -31,6 +41,6 @@ Actual Time (minutes):
 4. 35
 5. 2
 6. 90
-7.  
-8. 
+7. 15
+8. 60
 */}

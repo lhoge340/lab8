@@ -13,7 +13,7 @@ public class Driver {
 		System.out.println(monopoly.addPlayer("Noa", GamePiece.RED_THIMBLE, Location.HALL));
 		System.out.println(monopoly.addPlayer("Nigh", GamePiece.BLUE_BOOT, Location.BALLROOM));
 		
-	
+
 		
 
 	}
